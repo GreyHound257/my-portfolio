@@ -2,7 +2,7 @@
 import React from 'react';
 
 const skills = [
-  { category: "Core", items: ["Python", "TypeScript", "C++", "SQL"] },
+  { category: "Core", items: ["Python", "C++", "TypeScript", "SQL"] },
   { category: "Frameworks", items: ["Flask", "Next.js", "React", "Node.js"] },
 //   { category: "Security & Ops", items: ["Burp Suite", "Linux", "Git", "Docker"] },
   { category: "Automation", items: ["Telegram API", "Selenium", "Bash"] },
