@@ -16,7 +16,7 @@ export async function sendContactForm(formData: FormData) {
     const data = await resend.emails.send({
       from: 'Kuromaru Portfolio <onboarding@resend.dev>', // Default testing domain
       to: process.env.MY_EMAIL as string, // Delivers to YOU
-      reply_to: email, // Lets you hit "Reply" to answer them
+      replyTo: email, // Lets you hit "Reply" to answer them
       subject: `[UPLINK] New Signal from ${name}`,
       text: `
         SENDER: ${name} (${email})
