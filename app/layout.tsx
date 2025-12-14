@@ -4,6 +4,9 @@ import { ReactNode } from 'react';
 import Navbar from '@/components/ui/Navbar';
 import Footer from '@/components/ui/Footer';
 import Particles from '@/components/visuals/Particles';
+import type { Metadata } from 'next';
+import { Inter, JetBrains_Mono } from 'next/font/google'; // Assuming you kept the fonts
+
 
 export const metadata = {
   title: 'Eniolaoluwa Dayo-Obatewose — Portfolio',
