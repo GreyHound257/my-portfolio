@@ -13,7 +13,11 @@ export const metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body>
+      {/* suppressHydrationWarning is added here to prevent 
+        errors from browser extensions like Grammarly/LastPass 
+        that inject attributes into the body tag.
+      */}
+      <body suppressHydrationWarning>
         <Particles />
         <div className="min-h-screen flex flex-col">
           <Navbar />

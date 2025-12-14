@@ -78,9 +78,9 @@ export default function Particles() {
 	}, []);
 
 	return (
-		<div className="particles-root">
-			<canvas ref={ref} className="w-full h-full" />
-		</div>
-	);
+    <div className="fixed inset-0 -z-10 pointer-events-none">
+      <canvas ref={ref} className="w-full h-full" />
+    </div>
+  );
 }
 
