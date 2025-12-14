@@ -13,7 +13,7 @@ export default function Hero() {
         <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-12">
           
           {/* 1. The Avatar Module (New) */}
-          <div className="relative w-40 h-40 md:w-56 md:h-56 shrink-0 group">
+          <div className="relative w-50 h-50 md:w-56 md:h-56 shrink-0 group">
             {/* Rotating border effect */}
             <div className="absolute inset-0 rounded-full border-2 border-dashed border-cyan-500/30 animate-[spin_10s_linear_infinite]" />
             <div className="absolute inset-2 rounded-full border border-violet-500/50" />
