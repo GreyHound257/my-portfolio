@@ -12,6 +12,7 @@
   body {
     @apply bg-space-900 text-gray-100 antialiased;
     /* Optional: If you have a specific font like Inter, add it here */
+    overflow-x: hidden; /* Prevents horizontal scroll */
   }
 
   /* Custom Scrollbar for that "Elite" feel */

@@ -1,11 +1,13 @@
 // data/projects.ts
 
-export type Project = {
-  slug: string;
+export interface Project {
   title: string;
   description: string;
-  tech: string[]; // Renamed from 'tags' to 'tech' for clarity
-  link?: string;
+  tech: string[];
+  slug: string;        // Used for the URL ID (if you kept pages)
+  repoUrl: string;     // <--- NEW: Link to GitHub
+  demoUrl?: string;    // <--- NEW: Link to Live Site (Optional, marked by ?)
+  image?: string;      // Optional screenshot
   status: 'Live' | 'In Development' | 'Prototype';
 };
 
@@ -16,7 +18,8 @@ export const projects: Project[] = [
     description: 'A librarian-themed Telegram bot for the Enchanted Shadow Book Coven. Manages rulebooks and group interactions with a mystical personality.',
     tech: ['Python', 'Telegram API', 'Replit', 'NoSQL'],
     status: 'In Development',
-    link: 'https://github.com/GreyHound257/ShadowKeeper', 
+    repoUrl: 'https://github.com/GreyHound257/ShadowKeeper',
+    demoUrl: "https://edayoobatewose.vercel.app/", //Replace with actual URL
   },
   {
     slug: 'docu-convert-bot',
@@ -24,7 +27,8 @@ export const projects: Project[] = [
     description: 'High-performance document manipulation utility. Handles PDF merging, splitting, encryption, and OCR conversion via a Flask backend.',
     tech: ['Python', 'Flask', 'OCR', 'File Processing'],
     status: 'In Development',
-    link: 'https://github.com/GreyHound257/docu-convert-bot',
+    repoUrl: 'https://github.com/GreyHound257/docu-convert-bot',
+    demoUrl: "https://docu-convert-bot.fly.dev/", //Replace with actual URL
   },
   {
     slug: 'emotion-detection',
@@ -32,6 +36,7 @@ export const projects: Project[] = [
     description: 'Machine learning pipeline for real-time emotion detection from images. Custom model training script with a Flask API wrapper.',
     tech: ['Python', 'TensorFlow/PyTorch', 'Flask', 'Computer Vision'],
     status: 'Prototype',
-    link: 'https://github.com/GreyHound257/emotion-detection-web-app',
+    repoUrl: 'https://github.com/GreyHound257/emotion-detection-web-app',
+    demoUrl: "https://emotion-detection-web-app.fly.dev/", //Replace with actual URL
   }
 ];

@@ -7,10 +7,12 @@ import Particles from '@/components/visuals/Particles';
 import type { Metadata } from 'next';
 import { Inter, JetBrains_Mono } from 'next/font/google'; // Assuming you kept the fonts
 
-
-export const metadata = {
-  title: 'Eniolaoluwa Dayo-Obatewose — Portfolio',
-  description: 'My little corner of the internet where I showcase my projects and share my thoughts on web development and technology.',
+export const metadata: Metadata = {
+  title: 'Eniolaoluwa Dayo-Obatewose | Cybersecurity & Engineering',
+  description: 'The portfolio of Eniolaoluwa Dayo-Obatewose. Cybersecurity student, Full-Stack Developer, and Music Creator (Kuromaru).',
+  icons: {
+    icon: '/logo.png', // Uses your new logo in the browser tab
+  },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
