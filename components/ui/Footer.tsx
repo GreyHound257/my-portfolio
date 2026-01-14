@@ -19,13 +19,13 @@ export default function Footer() {
           {/* Contact Grid */}
           <div className="flex flex-wrap justify-center md:justify-end gap-x-8 gap-y-4 w-full md:w-auto">
             <a 
-              href="mailto:your-email@gmail.com" 
+              href="mailto:dayoobatewoseeniolaoluwa@gmail.com" // UPDATED
               className="text-gray-400 hover:text-cyan-400 transition-colors text-sm font-medium"
             >
               Email
             </a>
             <a 
-              href="https://linkedin.com/in/your-profile" 
+              href="https://www.linkedin.com/in/eniolaoluwa-dayo-obatewose-9599282a4/" // UPDATED
               target="_blank" 
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-cyan-400 transition-colors text-sm font-medium"
@@ -33,20 +33,12 @@ export default function Footer() {
               LinkedIn
             </a>
             <a 
-              href="https://github.com/GreyHound257" 
+              href="https://github.com/GreyHound257"
               target="_blank" 
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-cyan-400 transition-colors text-sm font-medium"
             >
               GitHub
-            </a>
-            <a 
-              href="https://twitter.com/your-handle" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-gray-400 hover:text-cyan-400 transition-colors text-sm font-medium"
-            >
-              Twitter / X
             </a>
           </div>
         </div>
@@ -56,9 +48,23 @@ export default function Footer() {
           <p className="text-xs text-gray-600 font-mono">
             © {new Date().getFullYear()} KUROMARU PROTOCOL
           </p>
-          <p className="text-xs text-gray-600 font-mono">
-            SEC_LEVEL: PUBLIC
-          </p>
+          
+          <div className="flex items-center gap-6">
+            {/* New: Link to Portfolio Repo */}
+            <a 
+              href="https://github.com/GreyHound257/my-portfolio" // Replace with your actual portfolio repo URL
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs text-gray-600 hover:text-cyan-400 transition-colors font-mono flex items-center gap-2"
+            >
+              <span className="w-2 h-2 rounded-full bg-green-500/20 inline-block border border-green-500/50"></span>
+              VIEW_SOURCE
+            </a>
+
+            <p className="text-xs text-gray-600 font-mono">
+              SEC_LEVEL: PUBLIC
+            </p>
+          </div>
         </div>
 
       </div>

@@ -26,4 +26,4 @@ def combine_files():
 
 if __name__ == "__main__":
     combine_files()
-    print("Done! Upload 'full_project_code.txt' to Google Drive.")
+    print("Done!")
