@@ -1,70 +1,64 @@
 // components/ui/Footer.tsx
-import Link from 'next/link';
+import { Mail } from 'lucide-react';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
 export default function Footer() {
   return (
-    <footer className="w-full border-t border-white/10 bg-space-900 pt-12 pb-8 mt-20">
-      <div className="container mx-auto px-6">
+    <footer id="contact" className="w-full border-t border-white/5 bg-brand-black pt-16 pb-8 mt-20">
+      <div className="container mx-auto px-6 max-w-5xl">
         
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-12">
+        <div className="flex flex-col md:flex-row justify-between items-start gap-8 mb-16">
           
-          {/* Identity */}
-          <div className="text-center md:text-left w-full md:w-auto">
-            <h3 className="text-xl font-bold text-white mb-2">Eniolaoluwa Dayo-Obatewose</h3>
-            <p className="text-gray-400 text-sm">
-              Cybersecurity Student & Full-Stack Engineer.
+          <div className="max-w-sm">
+            <h3 className="text-xl font-bold text-brand-offwhite mb-3">Eniolaoluwa Dayo-Obatewose</h3>
+            <p className="text-brand-muted text-sm leading-relaxed">
+              Building robust, scalable software with a focus on clean architecture and optimal performance.
             </p>
           </div>
 
-          {/* Contact Grid */}
-          <div className="flex flex-wrap justify-center md:justify-end gap-x-8 gap-y-4 w-full md:w-auto">
+          <div className="flex flex-col gap-3">
+            <h4 className="text-xs font-mono text-brand-muted uppercase tracking-wider mb-2">Connect</h4>
             <a 
-              href="mailto:dayoobatewoseeniolaoluwa@gmail.com" // UPDATED
-              className="text-gray-400 hover:text-cyan-400 transition-colors text-sm font-medium"
+              href="mailto:dayoobatewoseeniolaoluwa@gmail.com"
+              className="flex items-center gap-2 text-brand-offwhite hover:text-brand-accent transition-colors text-sm font-medium group"
             >
+              <Mail size={16} className="text-brand-muted group-hover:text-brand-accent transition-colors" />
               Email
             </a>
             <a 
-              href="https://www.linkedin.com/in/eniolaoluwa-dayo-obatewose-9599282a4/" // UPDATED
+              href="https://www.linkedin.com/in/eniolaoluwa-dayo-obatewose-9599282a4/"
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-gray-400 hover:text-cyan-400 transition-colors text-sm font-medium"
+              className="flex items-center gap-2 text-brand-offwhite hover:text-brand-accent transition-colors text-sm font-medium group"
             >
+              <FaLinkedin size={16} className="text-brand-muted group-hover:text-brand-accent transition-colors" />
               LinkedIn
             </a>
             <a 
               href="https://github.com/GreyHound257"
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-gray-400 hover:text-cyan-400 transition-colors text-sm font-medium"
+              className="flex items-center gap-2 text-brand-offwhite hover:text-brand-accent transition-colors text-sm font-medium group"
             >
+              <FaGithub size={16} className="text-brand-muted group-hover:text-brand-accent transition-colors" />
               GitHub
             </a>
           </div>
         </div>
 
-        {/* Copyright Line */}
         <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-xs text-gray-600 font-mono">
-            © {new Date().getFullYear()} KUROMARU PROTOCOL
+          <p className="text-xs text-brand-muted">
+            © {new Date().getFullYear()} Eniolaoluwa Dayo-Obatewose. Built with Next.js.
           </p>
           
-          <div className="flex items-center gap-6">
-            {/* New: Link to Portfolio Repo */}
-            <a 
-              href="https://github.com/GreyHound257/my-portfolio" // Replace with your actual portfolio repo URL
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-xs text-gray-600 hover:text-cyan-400 transition-colors font-mono flex items-center gap-2"
-            >
-              <span className="w-2 h-2 rounded-full bg-green-500/20 inline-block border border-green-500/50"></span>
-              VIEW_SOURCE
-            </a>
-
-            <p className="text-xs text-gray-600 font-mono">
-              SEC_LEVEL: PUBLIC
-            </p>
-          </div>
+          <a
+            href="https://github.com/GreyHound257/my-portfolio"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs text-brand-muted hover:text-brand-offwhite transition-colors flex items-center gap-2"
+          >
+            Source Code
+          </a>
         </div>
 
       </div>

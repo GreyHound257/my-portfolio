@@ -1,32 +1,35 @@
-// app/layout.tsx
 import './globals.css';
 import { ReactNode } from 'react';
 import Navbar from '@/components/ui/Navbar';
 import Footer from '@/components/ui/Footer';
-import Particles from '@/components/visuals/Particles';
 import type { Metadata } from 'next';
-import { Inter, JetBrains_Mono } from 'next/font/google'; // Assuming you kept the fonts
+import { Inter, JetBrains_Mono } from 'next/font/google';
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-jetbrains-mono',
+});
 
 export const metadata: Metadata = {
-  title: 'Eniolaoluwa Dayo-Obatewose | Cybersecurity & Engineering',
-  description: 'The portfolio of Eniolaoluwa Dayo-Obatewose. Cybersecurity student, Full-Stack Developer, and Music Creator (Kuromaru).',
+  title: 'Eniolaoluwa Dayo-Obatewose | Full-Stack Engineer',
+  description: 'The portfolio of Eniolaoluwa Dayo-Obatewose. Full-Stack Engineer building scalable, production-ready applications.',
   icons: {
-    icon: '/logo.png', // Uses your new logo in the browser tab
+    icon: '/logo.png',
   },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
-      {/* suppressHydrationWarning is added here to prevent 
-        errors from browser extensions like Grammarly/LastPass 
-        that inject attributes into the body tag.
-      */}
-      <body suppressHydrationWarning>
-        <Particles />
-        <div className="min-h-screen flex flex-col">
+    <html lang="en" className={`scroll-smooth ${inter.variable} ${jetbrainsMono.variable}`}>
+      <body suppressHydrationWarning className="font-sans">
+        <div className="min-h-screen flex flex-col relative selection:bg-brand-accent/20">
           <Navbar />
-          <main className="flex-1 container mx-auto px-6 py-12">
+          <main className="flex-1">
             {children}
           </main>
           <Footer />
