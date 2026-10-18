@@ -1,101 +1,205 @@
-// app/page.tsx
+'use client';
+
+import { useState } from 'react';
+import { ArrowUpRight } from 'lucide-react';
 import Hero from '@/components/ui/Hero';
+import ProjectPreview from '@/components/ui/ProjectPreview';
+import ProjectDialog from '@/components/ui/ProjectDialog';
+import LabDialog from '@/components/ui/LabDialog';
 import TechStack from '@/components/ui/TechStack';
-import { projects } from '@/data/projects';
-import Link from 'next/link';
+import { labIcons } from '@/lib/lab-icons';
+import { labs, projects, type LabId, type ProjectId } from '@/lib/site';
+
+function SectionHeading({
+  number,
+  eyebrow,
+  title,
+  subtitle,
+  note,
+}: {
+  number: string;
+  eyebrow: string;
+  title: string;
+  subtitle: string;
+  note: string;
+}) {
+  return (
+    <div className="section-heading">
+      <div>
+        <div className="eyebrow">
+          <span className="accent">{number}</span>
+          <span>/</span>
+          <span>{eyebrow}</span>
+        </div>
+        <h2>
+          {title}
+          <span className="accent">.</span>
+        </h2>
+        <p>{subtitle}</p>
+      </div>
+      <span className="section-note">
+        <span className="section-note-dot" />
+        {note}
+      </span>
+    </div>
+  );
+}
 
 export default function Home() {
+  const [activeProject, setActiveProject] = useState<ProjectId | null>(null);
+  const [activeLab, setActiveLab] = useState<LabId | null>(null);
+
   return (
-    <main className="min-h-screen bg-space-900 selection:bg-cyan-500/30">
-      
-      {/* 1. Identity Module */}
+    <>
       <Hero />
 
-      {/* 2. Capabilities Module */}
-      <TechStack />
-
-      {/* 3. Archives (Projects) Module */}
-      <section id="projects" className="py-24 container mx-auto px-6">
-        <div className="flex items-end justify-between mb-12">
-          <div>
-            <h2 className="text-sm font-mono text-violet-400 tracking-widest uppercase mb-2">
-              // The Archives
-            </h2>
-            <h3 className="text-3xl font-bold text-white">
-              Selected Deployments
-            </h3>
-          </div>
-          <div className="hidden md:block text-xs font-mono text-gray-500">
-            SEC_LEVEL: PUBLIC
-          </div>
+      {/* 01. Selected Work */}
+      <section id="work" className="container section work-section" aria-labelledby="work-label">
+        <div id="work-label">
+          <SectionHeading
+            number="01"
+            eyebrow="Built for the real world"
+            title="Selected Work"
+            subtitle="Flagship production-grade applications engineered for scale."
+            note="Purpose-built. Production-minded."
+          />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="project-grid">
           {projects.map((project) => (
-            <div 
-              key={project.slug} 
-              className={`group flex flex-col relative p-6 rounded-xl border transition-all duration-300
-                ${project.status === 'Live' 
-                  // LIVE PROJECTS: Stronger Green Glow)
-                  ? 'bg-space-900/80 border-green-500/30 shadow-[0_0_50px_-12px_rgba(34,197,94,0.25)] hover:shadow-[0_0_60px_-10px_rgba(34,197,94,0.35)]' 
-                  
-                  // OTHER PROJECTS: Standard look, but with a Violet Glow on HOVER
-                  : 'bg-space-900/50 border-white/10 hover:border-violet-500/50 hover:bg-space-800 hover:shadow-[0_0_40px_-10px_rgba(139,92,246,0.15)]'
-                }
-              `}
-            >
-              {/* Status Badge */}
-              <div className="absolute top-4 right-4">
-                <span className={`text-[10px] font-mono px-2 py-1 rounded-full border ${
-                  project.status === 'Live' 
-                    ? 'border-green-500/30 text-green-400 bg-green-500/5' 
-                    : 'border-yellow-500/30 text-yellow-400 bg-yellow-500/5'
-                }`}>
-                  {project.status.toUpperCase()}
-                </span>
-              </div>
+            <article className="project-card" key={project.id}>
+              <button
+                type="button"
+                className="project-visual-button"
+                onClick={() => setActiveProject(project.id)}
+                aria-label={`Explore ${project.title}`}
+              >
+                <ProjectPreview id={project.id} />
+              </button>
 
-              {/* Title & Description */}
-              <div className="mb-4 mt-2">
-                <h3 className="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors mb-3">
-                  {project.title}
-                </h3>
-                
-                <p className="text-gray-400 text-sm leading-relaxed mb-6">
-                  {project.description}
-                </p>
+              <div className="project-card-body">
+                <div className="project-kicker">
+                  <span>{project.number}</span>
+                  <span>/</span>
+                  <span>{project.category}</span>
+                </div>
 
-                {/* Tech Stack Tags */}
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.tech.map((t) => (
-                    <span key={t} className="text-xs font-mono px-2 py-1 rounded bg-white/5 text-gray-400 border border-white/5 group-hover:border-white/10 transition-colors">
-                      {t}
+                <div className="project-title-row">
+                  <h3>
+                    <button
+                      type="button"
+                      className="project-title"
+                      onClick={() => setActiveProject(project.id)}
+                    >
+                      {project.title}
+                    </button>
+                  </h3>
+                  <button
+                    type="button"
+                    className="icon-button project-arrow"
+                    onClick={() => setActiveProject(project.id)}
+                    aria-label={`View ${project.title} details`}
+                  >
+                    <ArrowUpRight size={15} />
+                  </button>
+                </div>
+
+                <p className="project-description">{project.description}</p>
+
+                <div className="tags">
+                  {project.tags.map((tag) => (
+                    <span className="tag" key={tag}>
+                      {tag}
                     </span>
                   ))}
                 </div>
               </div>
-
-              {/* Action Buttons*/}
-              <div className="mt-auto flex items-center justify-end gap-3 pt-4 border-t border-white/5">
-                
-                {/* Only Live Demo Button Remains */}
-                {project.demoUrl && (
-                  <Link 
-                    href={project.demoUrl}
-                    target="_blank"
-                    className="flex items-center gap-2 text-xs font-bold bg-white text-black px-3 py-1.5 rounded hover:bg-cyan-400 hover:scale-105 transition-all"
-                  >
-                    <span>LIVE DEMO</span>
-                    <span>→</span>
-                  </Link>
-                )}
-              </div>
-              
-            </div>
+            </article>
           ))}
         </div>
       </section>
 
-    </main>
+      {/* 02. The Labs */}
+      <section id="labs" className="container section labs-section" aria-labelledby="labs-label">
+        <div id="labs-label">
+          <SectionHeading
+            number="02"
+            eyebrow="A space to explore"
+            title="The Labs"
+            subtitle="Experimental systems, automation protocols &amp; works in progress."
+            note="Curiosity, in code."
+          />
+        </div>
+
+        <div className="lab-grid">
+          {labs.map((lab) => {
+            const Icon = labIcons[lab.id];
+            return (
+              <article className="lab-card" key={lab.id}>
+                <div className="lab-card-top">
+                  <span className="lab-icon">
+                    <Icon size={19} strokeWidth={1.6} />
+                  </span>
+                  <span className="lab-status">
+                    <i />
+                    <span>{lab.status}</span>
+                  </span>
+                </div>
+
+                <h3>
+                  <button
+                    type="button"
+                    className="lab-title"
+                    onClick={() => setActiveLab(lab.id)}
+                  >
+                    {lab.title}
+                    {lab.version && <span className="lab-version">{lab.version}</span>}
+                  </button>
+                </h3>
+
+                <p className="lab-description">{lab.description}</p>
+
+                <div className="lab-bottom">
+                  <div className="tags">
+                    {lab.tags.map((tag) => (
+                      <span className="tag" key={tag}>
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <button
+                    type="button"
+                    className="icon-button lab-arrow"
+                    onClick={() => setActiveLab(lab.id)}
+                    aria-label={`Read research notes about ${lab.title}`}
+                  >
+                    <ArrowUpRight size={15} />
+                  </button>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* 03. Technical Stack */}
+      <TechStack />
+
+      {/* Interactive Modals */}
+      {activeProject && (
+        <ProjectDialog
+          key={activeProject}
+          id={activeProject}
+          onClose={() => setActiveProject(null)}
+        />
+      )}
+      {activeLab && (
+        <LabDialog
+          key={activeLab}
+          id={activeLab}
+          onClose={() => setActiveLab(null)}
+        />
+      )}
+    </>
   );
 }

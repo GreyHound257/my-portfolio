@@ -1,81 +1,140 @@
-// components/ui/Navbar.tsx
 'use client';
 
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
-import { useState } from 'react';
+import { usePathname } from 'next/navigation';
+import { ArrowDownToLine, Menu, X } from 'lucide-react';
+import { BrandMark } from './BrandIcons';
+import { site } from '@/lib/site';
+
+const links = [
+  { name: 'Work', to: '/#work', id: 'work' },
+  { name: 'Labs', to: '/#labs', id: 'labs' },
+  { name: 'Stack', to: '/#stack', id: 'stack' },
+  { name: 'Contact', to: '/contact', id: 'contact' },
+];
+
+export function Availability() {
+  return (
+    <span className="status">
+      <span className="status-dot" />
+      <span>Available for new opportunities</span>
+    </span>
+  );
+}
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('');
+  const pathname = usePathname();
+
+  useEffect(() => {
+    const updateActive = () => {
+      if (pathname !== '/') return;
+      const sections = ['work', 'labs', 'stack'];
+      let active = '';
+      for (const id of sections) {
+        const element = document.getElementById(id);
+        if (element && element.getBoundingClientRect().top <= 200) {
+          active = id;
+        }
+      }
+      setActiveSection(active);
+    };
+
+    window.addEventListener('scroll', updateActive, { passive: true });
+    const frame = requestAnimationFrame(updateActive);
+    return () => {
+      window.removeEventListener('scroll', updateActive);
+      cancelAnimationFrame(frame);
+    };
+  }, [pathname]);
+
+  useEffect(() => {
+    const onEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setMenuOpen(false);
+    };
+    window.addEventListener('keydown', onEscape);
+    return () => window.removeEventListener('keydown', onEscape);
+  }, []);
+
+  const active =
+    pathname === '/contact'
+      ? 'contact'
+      : pathname === '/resume'
+      ? 'resume'
+      : pathname === '/'
+      ? activeSection
+      : '';
+
+  const renderLinks = () =>
+    links.map((link) => (
+      <Link
+        key={link.id}
+        href={link.to}
+        onClick={() => setMenuOpen(false)}
+        className={`nav-link ${active === link.id ? 'active' : ''}`}
+        aria-current={active === link.id ? 'page' : undefined}
+      >
+        {link.name}
+      </Link>
+    ));
 
   return (
-    <header className="fixed top-4 left-0 right-0 z-50 px-4 md:px-6">
-      <nav className="glass container mx-auto rounded-xl p-3 shadow-glow-md border border-white/5 relative">
-        <div className="flex items-center justify-between">
-          
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative w-8 h-8">
-              <Image 
-                src="/logo.png" 
-                alt="Kuromaru Protocol"
-                fill
-                className="object-contain group-hover:opacity-80 transition-opacity"
-              />
-            </div>
-            <span className="text-lg md:text-xl font-bold tracking-tight text-white group-hover:text-cyan-400 transition-colors">
-              Eniolaoluwa D.O.
-            </span>
-          </Link>
+    <header className="site-header">
+      <div className="container header-inner">
+        <Link
+          href="/"
+          className="brand"
+          aria-label="Eniolaoluwa D.O. home"
+          onClick={() => setMenuOpen(false)}
+        >
+          <BrandMark className="brand-mark text-electric" size={26} />
+          <span>
+            {site.shortName}
+            <span className="brand-period text-electric">.</span>
+          </span>
+        </Link>
 
-          {/* Desktop Navigation (Hidden on Mobile) */}
-          <ul className="hidden md:flex gap-6 items-center text-sm font-medium text-gray-300">
-            <li><Link href="/#projects" className="hover:text-white transition-colors">The Archives</Link></li>
-            <li><Link href="https://github.com/GreyHound257" target="_blank" className="hover:text-white transition-colors">GitHub</Link></li>
-            <li>
-              <Link href="/contact" className="px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 text-white border border-white/5 transition-all">
-                Initialize Comms
-              </Link>
-            </li>
-          </ul>
+        <nav className="desktop-nav" aria-label="Main navigation">
+          {renderLinks()}
+        </nav>
 
-          {/* Mobile Menu Button (Visible only on Mobile) */}
-          <button 
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-white p-2 focus:outline-none"
+        <div className="header-actions">
+          <Availability />
+          <Link
+            className="resume-button"
+            href="/resume"
+            onClick={() => setMenuOpen(false)}
           >
-            {isOpen ? '✕' : '☰'}
+            <span>Resume</span>
+            <ArrowDownToLine size={13} className="text-electric" />
+          </Link>
+          <button
+            type="button"
+            className="icon-button menu-toggle"
+            aria-label={menuOpen ? 'Close navigation' : 'Open navigation'}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-navigation"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            {menuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
+      </div>
 
-        {/* Mobile Dropdown Menu */}
-        {isOpen && (
-          <div className="absolute top-full left-0 right-0 mt-2 p-4 glass rounded-xl border border-white/5 flex flex-col gap-4 text-center md:hidden animate-in slide-in-from-top-2">
-            <Link 
-              href="/#projects" 
-              onClick={() => setIsOpen(false)}
-              className="text-gray-300 hover:text-white py-2"
-            >
-              The Archives
-            </Link>
-            <Link 
-              href="https://github.com/GreyHound257" 
-              target="_blank"
-              onClick={() => setIsOpen(false)}
-              className="text-gray-300 hover:text-white py-2"
-            >
-              GitHub
-            </Link>
-            <Link 
-              href="/contact" 
-              onClick={() => setIsOpen(false)}
-              className="px-4 py-3 rounded-lg bg-cyan-500/10 text-cyan-400 border border-cyan-500/20"
-            >
-              Initialize Comms
-            </Link>
+      {menuOpen && (
+        <nav
+          id="mobile-navigation"
+          className="mobile-nav"
+          aria-label="Mobile navigation"
+        >
+          {renderLinks()}
+          <div className="pt-2">
+            <Availability />
           </div>
-        )}
-      </nav>
-    </header> 
+        </nav>
+      )}
+    </header>
   );
 }

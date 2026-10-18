@@ -1,72 +1,68 @@
-// components/ui/Footer.tsx
 import Link from 'next/link';
+import { ArrowUpRight, Code2, Mail } from 'lucide-react';
+import { GitHubIcon, LinkedInIcon } from './BrandIcons';
+import { site } from '@/lib/site';
 
 export default function Footer() {
   return (
-    <footer className="w-full border-t border-white/10 bg-space-900 pt-12 pb-8 mt-20">
-      <div className="container mx-auto px-6">
-        
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-12">
-          
-          {/* Identity */}
-          <div className="text-center md:text-left w-full md:w-auto">
-            <h3 className="text-xl font-bold text-white mb-2">Eniolaoluwa Dayo-Obatewose</h3>
-            <p className="text-gray-400 text-sm">
-              Cybersecurity Student & Full-Stack Engineer.
+    <footer className="site-footer">
+      <div className="container">
+        <div className="footer-main">
+          <div>
+            <Link href="/" className="footer-brand">
+              {site.name}
+              <span className="accent">.</span>
+            </Link>
+            <p className="footer-bio">
+              Building robust, scalable software with a focus on clean architecture,
+              security-first design, and optimal performance.
             </p>
           </div>
 
-          {/* Contact Grid */}
-          <div className="flex flex-wrap justify-center md:justify-end gap-x-8 gap-y-4 w-full md:w-auto">
-            <a 
-              href="mailto:dayoobatewoseeniolaoluwa@gmail.com" // UPDATED
-              className="text-gray-400 hover:text-cyan-400 transition-colors text-sm font-medium"
-            >
-              Email
-            </a>
-            <a 
-              href="https://www.linkedin.com/in/eniolaoluwa-dayo-obatewose-9599282a4/" // UPDATED
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-gray-400 hover:text-cyan-400 transition-colors text-sm font-medium"
-            >
-              LinkedIn
-            </a>
-            <a 
-              href="https://github.com/GreyHound257"
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-gray-400 hover:text-cyan-400 transition-colors text-sm font-medium"
-            >
-              GitHub
-            </a>
+          <div className="footer-connect">
+            <span className="eyebrow">Good things start with a conversation</span>
+            <div className="footer-socials">
+              <Link href="/contact">
+                <Mail size={14} className="text-electric" />
+                <span>Email</span>
+              </Link>
+              <a
+                href={site.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <LinkedInIcon size={14} className="text-electric" />
+                <span>LinkedIn</span>
+              </a>
+              <a
+                href={site.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Find Eniolaoluwa on GitHub"
+              >
+                <GitHubIcon size={14} className="text-electric" />
+                <span>GitHub</span>
+              </a>
+            </div>
           </div>
         </div>
 
-        {/* Copyright Line */}
-        <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-xs text-gray-600 font-mono">
-            © {new Date().getFullYear()} KUROMARU PROTOCOL
+        <div className="footer-bottom">
+          <p>
+            © {new Date().getFullYear()} {site.name}.{' '}
+            <span className="footer-built">Built with Next.js &amp; TypeScript.</span>
           </p>
-          
-          <div className="flex items-center gap-6">
-            {/* New: Link to Portfolio Repo */}
-            <a 
-              href="https://github.com/GreyHound257/my-portfolio" // Replace with your actual portfolio repo URL
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-xs text-gray-600 hover:text-cyan-400 transition-colors font-mono flex items-center gap-2"
-            >
-              <span className="w-2 h-2 rounded-full bg-green-500/20 inline-block border border-green-500/50"></span>
-              VIEW_SOURCE
-            </a>
-
-            <p className="text-xs text-gray-600 font-mono">
-              SEC_LEVEL: PUBLIC
-            </p>
-          </div>
+          <a
+            className="text-link"
+            href={site.portfolioRepo}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Code2 size={13} />
+            <span>Source repository</span>
+            <ArrowUpRight size={12} />
+          </a>
         </div>
-
       </div>
     </footer>
   );
