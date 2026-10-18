@@ -10,25 +10,27 @@ import Link from 'next/link';
 export default function Labs() {
   return (
     <section id="labs" className="py-24 container mx-auto px-6 max-w-5xl">
-      <div className="mb-12">
-        <motion.h2
+      <div className="mb-16">
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-2xl md:text-3xl font-bold text-brand-offwhite mb-4"
+          className="flex items-center gap-4 mb-4"
         >
-          The Labs
-        </motion.h2>
-        <motion.p
+          <span className="text-xs font-mono text-brand-muted tracking-[0.2em] uppercase">02 / The Labs</span>
+          <div className="h-px bg-white/10 flex-grow max-w-[100px]" />
+        </motion.div>
+
+        <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-brand-muted text-lg"
+          className="text-3xl md:text-4xl font-bold text-brand-offwhite mb-4"
         >
           Experimental projects & works in progress.
-        </motion.p>
+        </motion.h2>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

@@ -6,6 +6,8 @@
   --color-brand-muted: #A1A1AA;
   --color-brand-accent: #3B82F6;
   --color-glass-border: rgba(255, 255, 255, 0.1);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 @layer base {
