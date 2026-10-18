@@ -1,6 +1,6 @@
 export const site = {
   name: 'Eniolaoluwa Dayo-Obatewose',
-  shortName: 'Eniolaoluwa D.O.',
+  shortName: 'Eniolaoluwa D.O',
   alias: 'Kuromaru',
   title: 'Cybersecurity & Full-Stack Engineer',
   bio: 'Specializing in secure web applications, automated workflows, and high-performance APIs.',
@@ -157,7 +157,7 @@ export const stack = [
   },
   {
     category: 'Databases & Storage',
-    items: ['PostgreSQL', 'SQL', 'Neon', 'Redis'],
+    items: ['PostgreSQL', 'SQL', 'Neon'],
   },
   {
     category: 'Systems & Tools',

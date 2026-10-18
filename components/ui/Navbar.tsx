@@ -86,7 +86,7 @@ export default function Navbar() {
         <Link
           href="/"
           className="brand"
-          aria-label="Eniolaoluwa D.O. home"
+          aria-label="Eniolaoluwa D.O home"
           onClick={() => setMenuOpen(false)}
         >
           <BrandMark className="brand-mark text-electric" size={26} />
