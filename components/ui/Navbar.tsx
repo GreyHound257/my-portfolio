@@ -3,7 +3,7 @@
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Download } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Navbar() {
@@ -34,7 +34,10 @@ export default function Navbar() {
       >
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 group">
-          <span className="text-sm font-semibold tracking-tight text-brand-offwhite group-hover:text-white transition-colors">
+          <div className="w-5 h-5 flex items-center justify-center border border-white/20 rounded-md">
+            <span className="text-[10px] font-mono font-bold text-white">&lt;/&gt;</span>
+          </div>
+          <span className="text-sm font-semibold tracking-tight text-brand-offwhite group-hover:text-white transition-colors ml-1">
             Eniolaoluwa D.O.
           </span>
         </Link>
@@ -50,15 +53,20 @@ export default function Navbar() {
           ))}
         </ul>
 
-        {/* Action Button */}
-        <div className="hidden md:block">
+        {/* Status Indicator & Action Button */}
+        <div className="hidden md:flex items-center gap-6">
+          <div className="flex items-center gap-2">
+            <div className="w-1.5 h-1.5 rounded-full bg-brand-accent shadow-[0_0_8px_rgba(59,130,246,0.6)] animate-pulse"></div>
+            <span className="text-xs font-medium text-brand-muted">Available for new opportunities</span>
+          </div>
           <a
             href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm font-medium px-4 py-2 rounded-full border border-white/10 hover:bg-white/5 text-brand-offwhite transition-all"
+            className="flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-lg border border-white/10 hover:bg-white/5 text-brand-offwhite transition-all"
           >
             Resume
+            <Download size={14} />
           </a>
         </div>
 
@@ -91,14 +99,19 @@ export default function Navbar() {
               </Link>
             ))}
             <div className="h-px w-full bg-white/10 my-1" />
+            <div className="flex items-center gap-2 justify-center py-2">
+              <div className="w-1.5 h-1.5 rounded-full bg-brand-accent shadow-[0_0_8px_rgba(59,130,246,0.6)] animate-pulse"></div>
+              <span className="text-xs font-medium text-brand-muted">Available for new opportunities</span>
+            </div>
             <a
               href="/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setIsOpen(false)}
-              className="text-center font-medium px-4 py-3 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 text-brand-offwhite transition-all"
+              className="flex items-center justify-center gap-2 text-center font-medium px-4 py-3 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 text-brand-offwhite transition-all"
             >
               Resume
+              <Download size={16} />
             </a>
           </motion.div>
         )}

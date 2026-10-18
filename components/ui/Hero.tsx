@@ -38,7 +38,7 @@ export default function Hero() {
               className="text-5xl md:text-7xl font-bold tracking-tight text-brand-offwhite mb-6 leading-tight"
             >
               Engineering Logic.<br />
-              <span className="text-brand-muted">Scalable Code.</span>
+              <span className="text-brand-accent">Scalable Code.</span>
             </motion.h1>
 
             <motion.p
@@ -59,10 +59,10 @@ export default function Hero() {
               {/* Primary CTA */}
               <Link
                 href="/#work"
-                className="group px-6 py-3 rounded-full bg-brand-accent text-white font-medium hover:bg-blue-600 transition-all flex items-center justify-center gap-2"
+                className="group px-6 py-3 rounded-full bg-brand-accent text-brand-black font-medium hover:bg-blue-400 transition-all flex items-center justify-center gap-2"
               >
                 <span>View Projects</span>
-                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform -rotate-45" />
               </Link>
 
               {/* Secondary CTA */}
@@ -70,10 +70,11 @@ export default function Hero() {
                 href="https://github.com/GreyHound257"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3 rounded-full border border-white/10 text-brand-offwhite font-medium hover:bg-white/5 hover:border-white/20 transition-colors flex items-center justify-center gap-2"
+                className="group px-6 py-3 rounded-full border border-white/10 text-brand-offwhite font-medium hover:bg-white/5 hover:border-white/20 transition-colors flex items-center justify-center gap-2"
               >
                 <FaGithub size={18} />
                 <span>GitHub</span>
+                <ArrowRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform -rotate-45 opacity-50" />
               </a>
             </motion.div>
           </div>
@@ -106,25 +107,25 @@ export default function Hero() {
                     {"\n"}
                     <span className="text-purple-400">import</span> {"{ "}
                     <span className="text-brand-offwhite">verifyAuth</span>
-                    {" } "} <span className="text-purple-400">from</span> <span className="text-green-300/80">{'\'@/lib/auth\''}</span>{";"}
+                    {" } "} <span className="text-purple-400">from</span> <span className="text-brand-accent/80">{'\'@/lib/auth\''}</span>{";"}
                     {"\n"}
                     <span className="text-purple-400">import</span> {"{ "}
                     <span className="text-brand-offwhite">fetchEnterpriseData</span>
-                    {" } "} <span className="text-purple-400">from</span> <span className="text-green-300/80">{'\'@/services/api\''}</span>{";"}
+                    {" } "} <span className="text-purple-400">from</span> <span className="text-brand-accent/80">{'\'@/services/api\''}</span>{";"}
                     {"\n\n"}
                     <span className="text-purple-400">export async function</span> <span className="text-blue-400">GET</span>{"("}<span className="text-orange-300">req</span>{": Request) {"}
                     {"\n  "}
                     <span className="text-purple-400">const</span> session = <span className="text-purple-400">await</span> <span className="text-blue-400">verifyAuth</span>{"("}req{");"}
                     {"\n  "}
                     <span className="text-purple-400">if</span> {"(!session) "}
-                    <span className="text-purple-400">return new</span> <span className="text-yellow-200/80">Response</span>{"("}<span className="text-green-300/80">{'\'Unauthorized\''}</span>{", { "}status{": "}
+                    <span className="text-purple-400">return new</span> <span className="text-yellow-200/80">Response</span>{"("}<span className="text-brand-accent/80">{'\'Unauthorized\''}</span>{", { "}status{": "}
                     <span className="text-orange-300">401</span>{" });"}
                     {"\n\n  "}
                     <span className="text-purple-400">const</span> data = <span className="text-purple-400">await</span> <span className="text-blue-400">fetchEnterpriseData</span>{"({" }
                     {"\n    "}userId{": session."}<span className="text-brand-offwhite">id</span>{","}
                     {"\n    "}optimized{": "}
                     <span className="text-orange-300">true</span>{","}
-                    {"\n    "}cache{": "}<span className="text-green-300/80">{'\'force-cache\''}</span>
+                    {"\n    "}cache{": "}<span className="text-brand-accent/80">{'\'force-cache\''}</span>
                     {"\n  });"}
                     {"\n\n  "}
                     <span className="text-purple-400">return</span> <span className="text-yellow-200/80">Response</span>{".json({ "}success{": "}
