@@ -39,51 +39,58 @@ export default function SelectedWork() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="glass-card p-8 md:p-10 rounded-2xl group"
+            className="glass-card p-8 md:p-10 rounded-2xl group hover:border-brand-accent/30"
           >
-            <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 mb-6">
-              <div>
-                <h3 className="text-2xl font-bold text-brand-offwhite mb-3 group-hover:text-brand-accent transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-brand-muted leading-relaxed max-w-2xl">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+              <div className="flex flex-col h-full">
+                <div className="flex justify-between items-start gap-4 mb-4">
+                  <h3 className="text-2xl font-bold text-brand-offwhite group-hover:text-brand-accent transition-colors">
+                    {project.title}
+                  </h3>
+                  <div className="flex gap-3">
+                    {project.repoUrl && (
+                      <Link
+                        href={project.repoUrl}
+                        target="_blank"
+                        className="p-2 rounded-full bg-white/5 hover:bg-brand-accent/10 hover:text-brand-accent text-brand-offwhite transition-colors"
+                        aria-label="GitHub Repository"
+                      >
+                        <FaGithub size={20} />
+                      </Link>
+                    )}
+                    {project.demoUrl && (
+                      <Link
+                        href={project.demoUrl}
+                        target="_blank"
+                        className="p-2 rounded-full bg-white/5 hover:bg-brand-accent/10 hover:text-brand-accent text-brand-offwhite transition-colors"
+                        aria-label="Live Demo"
+                      >
+                        <ExternalLink size={20} />
+                      </Link>
+                    )}
+                  </div>
+                </div>
+
+                <p className="text-brand-muted leading-relaxed mb-8 flex-grow">
                   {project.description}
                 </p>
+
+                <div className="flex flex-wrap gap-2 mt-auto">
+                  {project.tech.map((t) => (
+                    <span
+                      key={t}
+                      className="px-3 py-1 text-xs font-mono rounded-md bg-white/5 text-brand-muted border border-white/5"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
               </div>
 
-              <div className="flex gap-3">
-                {project.repoUrl && (
-                  <Link
-                    href={project.repoUrl}
-                    target="_blank"
-                    className="p-2 rounded-full bg-white/5 hover:bg-white/10 text-brand-offwhite transition-colors"
-                    aria-label="GitHub Repository"
-                  >
-                    <FaGithub size={20} />
-                  </Link>
-                )}
-                {project.demoUrl && (
-                  <Link
-                    href={project.demoUrl}
-                    target="_blank"
-                    className="p-2 rounded-full bg-white/5 hover:bg-white/10 text-brand-offwhite transition-colors"
-                    aria-label="Live Demo"
-                  >
-                    <ExternalLink size={20} />
-                  </Link>
-                )}
+              {/* Image Placeholder */}
+              <div className="w-full aspect-video rounded-xl bg-white/5 border border-white/10 flex items-center justify-center overflow-hidden">
+                <span className="text-brand-muted font-mono text-sm opacity-50">IMAGE_PLACEHOLDER</span>
               </div>
-            </div>
-
-            <div className="flex flex-wrap gap-2 mt-auto">
-              {project.tech.map((t) => (
-                <span
-                  key={t}
-                  className="px-3 py-1 text-xs font-mono rounded-md bg-white/5 text-brand-muted border border-white/5"
-                >
-                  {t}
-                </span>
-              ))}
             </div>
           </motion.div>
         ))}

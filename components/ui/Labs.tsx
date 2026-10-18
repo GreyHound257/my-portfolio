@@ -39,7 +39,7 @@ export default function Labs() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: index * 0.1 }}
-            className="glass-card p-6 rounded-xl flex flex-col h-full group"
+            className="glass-card p-6 rounded-xl flex flex-col h-full group hover:border-brand-accent/30"
           >
             <div className="flex justify-between items-start mb-4">
               <h3 className="text-lg font-bold text-brand-offwhite group-hover:text-brand-accent transition-colors">
@@ -47,12 +47,12 @@ export default function Labs() {
               </h3>
               <div className="flex gap-2 text-brand-muted">
                 {project.repoUrl && (
-                  <Link href={project.repoUrl} target="_blank" className="hover:text-brand-offwhite transition-colors">
+                  <Link href={project.repoUrl} target="_blank" className="hover:text-brand-accent transition-colors">
                     <FaGithub size={18} />
                   </Link>
                 )}
                 {project.demoUrl && (
-                  <Link href={project.demoUrl} target="_blank" className="hover:text-brand-offwhite transition-colors">
+                  <Link href={project.demoUrl} target="_blank" className="hover:text-brand-accent transition-colors">
                     <ExternalLink size={18} />
                   </Link>
                 )}

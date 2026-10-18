@@ -11,7 +11,7 @@ export default function Hero() {
     <section className="relative min-h-[90vh] flex flex-col justify-center pt-20 overflow-hidden">
       
       {/* Subtle Radial Gradient Background */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[500px] bg-white/[0.03] rounded-full blur-[120px] -z-10 pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-brand-accent/[0.15] rounded-full blur-[150px] -z-10 pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-10 flex flex-col items-center text-center max-w-4xl">
 
@@ -55,7 +55,7 @@ export default function Hero() {
           {/* Primary CTA */}
           <Link
             href="/#work"
-            className="group px-6 py-3 rounded-full bg-brand-offwhite text-brand-black font-medium hover:bg-white transition-all flex items-center justify-center gap-2"
+            className="group px-6 py-3 rounded-full bg-brand-accent text-white font-medium hover:bg-blue-600 transition-all flex items-center justify-center gap-2"
           >
             <span>View Projects</span>
             <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
@@ -66,7 +66,7 @@ export default function Hero() {
             href="https://github.com/GreyHound257"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-6 py-3 rounded-full border border-white/10 text-brand-offwhite font-medium hover:bg-white/5 transition-colors flex items-center justify-center gap-2"
+            className="px-6 py-3 rounded-full border border-white/10 text-brand-offwhite font-medium hover:bg-white/5 hover:text-brand-accent transition-colors flex items-center justify-center gap-2"
           >
             <FaGithub size={18} />
             <span>GitHub</span>

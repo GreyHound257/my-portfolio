@@ -33,7 +33,7 @@ export default function TechStack() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: index * 0.1 }}
-            className="glass-card p-6 rounded-xl"
+            className="glass p-6 rounded-xl"
           >
             <h4 className="text-sm font-semibold text-brand-offwhite mb-4 uppercase tracking-wider">
               {skillGroup.category}
@@ -42,7 +42,7 @@ export default function TechStack() {
               {skillGroup.items.map((item, i) => (
                 <span
                   key={i}
-                  className="px-3 py-1.5 text-xs font-mono rounded-md bg-white/5 text-brand-muted border border-white/5"
+                  className="px-3 py-1.5 text-xs font-mono rounded-md bg-white/10 text-brand-offwhite border border-white/10 shadow-sm"
                 >
                   {item}
                 </span>
