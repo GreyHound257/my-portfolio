@@ -153,7 +153,7 @@ export const stack = [
   },
   {
     category: 'Backend & APIs',
-    items: ['Python', 'FastAPI', 'Flask', 'Node.js'],
+    items: ['Python', 'FastAPI', 'Flask'],
   },
   {
     category: 'Databases & Storage',
@@ -161,7 +161,7 @@ export const stack = [
   },
   {
     category: 'Systems & Tools',
-    items: ['Linux', 'Git', 'GitHub', 'Docker', 'Burp Suite'],
+    items: ['Linux', 'Git', 'GitHub', 'Docker'],
   },
 ];
 
