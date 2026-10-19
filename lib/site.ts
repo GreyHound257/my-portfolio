@@ -71,7 +71,7 @@ export const projects: ProjectItem[] = [
     category: 'ENTERPRISE SOFTWARE',
     description:
       'A full-stack internal helpdesk platform built to streamline corporate IT service requests. Features strict role-based access control (RBAC), automated SLA tracking, incident triage workflows, and instant notifications.',
-    tags: ['React', 'Node.js', 'SQL', 'Tailwind CSS', 'WebSockets'],
+    tags: ['HTML 5', 'PHP', 'SQL', 'Tailwind CSS', 'APIs'],
     status: 'Featured',
     features: [
       {
@@ -149,11 +149,11 @@ export const labs: LabItem[] = [
 export const stack = [
   {
     category: 'Frontend & UI',
-    items: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS'],
+    items: ['Next.js', 'HTML 5', 'React', 'TypeScript', 'Tailwind CSS'],
   },
   {
     category: 'Backend & APIs',
-    items: ['Python', 'FastAPI', 'Flask'],
+    items: ['Python', 'FastAPI', 'Flask', 'PHP'],
   },
   {
     category: 'Databases & Storage',
