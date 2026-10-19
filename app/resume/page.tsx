@@ -41,19 +41,31 @@ export default function ResumePage() {
         <h1>
           Eniolaoluwa<br />Dayo-Obatewose
         </h1>
-        <p className="resume-role">Full-Stack &amp; Cybersecurity Engineer</p>
+        <p className="resume-role">Full-Stack &amp; Systems Engineer · Security-Minded</p>
 
         <p className="resume-summary">
-          Full-Stack &amp; Systems Engineer specializing in secure web applications, enterprise
-          internal tools, and high-performance asynchronous APIs. Dedicated to clean architecture,
-          resilient data integrity, and observable system engineering.
+          Full-Stack &amp; Systems Engineer specializing in modern web applications, enterprise
+          internal tools, and high-performance backend APIs. Combines software engineering discipline
+          with foundational cybersecurity training to build resilient, maintainable, and well-architected systems.
         </p>
 
         <section className="resume-section">
           <h2>Selected Production Projects</h2>
           {projects.map((project) => (
             <div className="resume-project" key={project.id}>
-              <h3>{project.title}</h3>
+              <h3>
+                {project.title}
+                {project.demoUrl && (
+                  <a
+                    href={project.demoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="ml-2 text-xs font-mono text-cyan-400 font-normal"
+                  >
+                    (cu-vote.vercel.app ↗)
+                  </a>
+                )}
+              </h3>
               <p>{project.description}</p>
               <div className="tags">
                 {project.tags.map((tag) => (

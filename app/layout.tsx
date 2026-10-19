@@ -21,14 +21,14 @@ const ibmPlexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: `${site.shortName} — Full-Stack & Cybersecurity Engineer`,
-  description: `${site.name} (${site.alias}) — Full-Stack & Cybersecurity Engineer specializing in secure web applications, enterprise tools, and high-performance APIs. Engineering Logic. Scalable Code.`,
+  title: `${site.shortName} — Full-Stack & Systems Engineer`,
+  description: `${site.name} (${site.alias}) — Full-Stack & Systems Engineer building reliable web applications, enterprise tools, and high-performance APIs with a security-first foundation. Engineering Logic. Scalable Code.`,
   icons: {
     icon: '/logo.png',
   },
   openGraph: {
-    title: `${site.name} — Full-Stack & Cybersecurity Engineer`,
-    description: 'Engineering Logic. Scalable Code. Secure web applications, enterprise tools, and high-performance APIs.',
+    title: `${site.name} — Full-Stack & Systems Engineer`,
+    description: 'Engineering Logic. Scalable Code. Resilient web applications, enterprise tools, and high-performance backend systems.',
     type: 'website',
   },
 };

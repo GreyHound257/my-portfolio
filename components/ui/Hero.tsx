@@ -11,7 +11,7 @@ export default function Hero() {
         <div className="hero-copy">
           <div className="eyebrow">
             <span className="eyebrow-line" />
-            <span>Cybersecurity &amp; Full-Stack Engineer // Kuromaru</span>
+            <span>Full-Stack &amp; Systems Engineer · Security-Minded // Kuromaru</span>
           </div>
 
           <h1 id="hero-heading">
@@ -20,8 +20,8 @@ export default function Hero() {
           </h1>
 
           <p className="hero-subtitle">
-            Full-Stack &amp; Systems Engineer specializing in secure web platforms,
-            automated backend services, and high-performance microservices.
+            Full-Stack &amp; Systems Engineer building resilient web platforms,
+            automated internal tools, and high-performance backend services—engineered with a security-first foundation.
           </p>
 
           <div className="hero-ctas">

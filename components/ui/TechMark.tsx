@@ -1,6 +1,7 @@
 import {
   Atom,
   Braces,
+  Code,
   Database,
   FlaskConical,
   GitBranch,
@@ -27,9 +28,19 @@ export default function TechMark({ name }: { name: string }) {
     case 'TypeScript':
       return <span className="tech-mark ts font-mono">TS</span>;
     case 'Tailwind CSS':
+    case 'Tailwind':
       return (
         <span className="tech-mark tailwind">
           <Wind size={18} strokeWidth={1.6} />
+        </span>
+      );
+    case 'PHP':
+      return <span className="tech-mark php font-mono font-bold text-[10px] text-cyan-400">PHP</span>;
+    case 'HTML':
+    case 'HTML 5':
+      return (
+        <span className="tech-mark html">
+          <Code size={16} className="text-orange-400" />
         </span>
       );
     case 'Python':

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, ExternalLink } from 'lucide-react';
 import Hero from '@/components/ui/Hero';
 import ProjectPreview from '@/components/ui/ProjectPreview';
 import ProjectDialog from '@/components/ui/ProjectDialog';
@@ -82,6 +82,22 @@ export default function Home() {
                   <span>{project.number}</span>
                   <span>/</span>
                   <span>{project.category}</span>
+                  {project.demoUrl ? (
+                    <a
+                      href={project.demoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ml-auto inline-flex items-center gap-1 text-[9px] font-mono text-cyan-400 hover:text-cyan-300 transition-colors"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <span>Live Site</span>
+                      <ExternalLink size={10} />
+                    </a>
+                  ) : (
+                    <span className="ml-auto text-[9px] font-mono text-slate-400">
+                      Internal Tool
+                    </span>
+                  )}
                 </div>
 
                 <div className="project-title-row">
@@ -106,12 +122,23 @@ export default function Home() {
 
                 <p className="project-description">{project.description}</p>
 
-                <div className="tags">
-                  {project.tags.map((tag) => (
-                    <span className="tag" key={tag}>
-                      {tag}
-                    </span>
-                  ))}
+                <div className="flex items-center justify-between gap-3 mt-4 flex-wrap">
+                  <div className="tags">
+                    {project.tags.map((tag) => (
+                      <span className="tag" key={tag}>
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={() => setActiveProject(project.id)}
+                    className="text-[11px] font-mono text-cyan-400 hover:text-cyan-300 inline-flex items-center gap-1 transition-colors"
+                  >
+                    <span>View Case Study</span>
+                    <ArrowUpRight size={12} />
+                  </button>
                 </div>
               </div>
             </article>

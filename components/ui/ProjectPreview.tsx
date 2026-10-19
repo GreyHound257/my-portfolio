@@ -1,20 +1,8 @@
-import {
-  Bell,
-  ChartNoAxesCombined,
-  CircleHelp,
-  House,
-  LayoutDashboard,
-  LifeBuoy,
-  LockKeyhole,
-  Settings,
-  ShieldCheck,
-  Ticket,
-  Users,
-  Vote,
-} from 'lucide-react';
-import type { ProjectId } from '@/lib/site';
+import Image from 'next/image';
+import { ExternalLink, LockKeyhole, Shield } from 'lucide-react';
+import { projects, type ProjectId } from '@/lib/site';
 
-function Toolbar({ address }: { address: string }) {
+function Toolbar({ address, badge }: { address: string; badge?: string }) {
   return (
     <div className="browser-toolbar">
       <div className="window-dots">
@@ -23,103 +11,44 @@ function Toolbar({ address }: { address: string }) {
         <i />
       </div>
       <div className="browser-address">
-        <LockKeyhole size={7} />
+        <LockKeyhole size={8} className="text-electric" />
         <span>{address}</span>
       </div>
+      {badge && (
+        <span className="ml-auto text-[8px] font-mono px-2 py-0.5 rounded bg-cyan-950/70 border border-cyan-500/30 text-cyan-300">
+          {badge}
+        </span>
+      )}
     </div>
   );
 }
 
 export default function ProjectPreview({ id }: { id: ProjectId }) {
+  const project = projects.find((p) => p.id === id)!;
+
   if (id === 'cuvote') {
     return (
       <div
-        className="project-preview preview-vote"
+        className="project-preview preview-vote group"
         role="img"
-        aria-label="CUVote platform preview: an election dashboard with voter statistics and active elections"
+        aria-label="CUVote platform: Live Covenant University E-Voting Portal at cu-vote.vercel.app"
       >
         <div className="preview-browser">
-          <Toolbar address="app.cuvote / dashboard" />
-          <div className="mock-app">
-            <div className="mock-sidebar">
-              <div className="mock-logo">
-                <Vote size={15} className="text-electric" />
-                <span>CUVote</span>
-                <span className="text-electric">.</span>
-              </div>
-              <div className="mock-nav-item active">
-                <LayoutDashboard size={9} />
-                <span>Overview</span>
-              </div>
-              <div className="mock-nav-item">
-                <Vote size={9} />
-                <span>Elections</span>
-              </div>
-              <div className="mock-nav-item">
-                <Users size={9} />
-                <span>Voters</span>
-              </div>
-              <div className="mock-nav-item">
-                <ChartNoAxesCombined size={9} />
-                <span>Results</span>
-              </div>
-              <div className="mock-nav-item">
-                <Settings size={9} />
-                <span>Settings</span>
-              </div>
-              <div className="mock-sidebar-footer">◉ Campus workspace</div>
-            </div>
-
-            <div className="mock-main">
-              <div className="mock-breadcrumb">Workspace / Overview</div>
-              <div className="mock-title-row">
-                <div>
-                  <h4>Every voice counts.</h4>
-                  <p>A clearer view of your campus elections.</p>
-                </div>
-                <span className="mock-action">＋ Create election</span>
-              </div>
-
-              <div className="mock-stats">
-                <div className="mock-stat">
-                  <span>Registered voters</span>
-                  <strong>2,480</strong>
-                  <small>↗ Verified &amp; ready</small>
-                </div>
-                <div className="mock-stat">
-                  <span>Votes cast</span>
-                  <strong>1,846</strong>
-                  <small>↗ 74.4% participation</small>
-                </div>
-                <div className="mock-stat">
-                  <span>Active elections</span>
-                  <strong>03</strong>
-                  <small>● Systems operational</small>
-                </div>
-              </div>
-
-              <div className="mock-election">
-                <div className="mock-election-title">
-                  <span>Student Council Election</span>
-                  <span className="mock-live">● Voting is live</span>
-                </div>
-                <div className="mock-candidates">
-                  <div className="mock-candidate">
-                    <span className="mock-avatar">AO</span>
-                    <div>
-                      <strong>Alex Okafor</strong>
-                      <small>Presidential candidate</small>
-                    </div>
-                  </div>
-                  <div className="mock-candidate">
-                    <span className="mock-avatar">JA</span>
-                    <div>
-                      <strong>Jordan Adeyemi</strong>
-                      <small>Presidential candidate</small>
-                    </div>
-                  </div>
-                </div>
-              </div>
+          <Toolbar address="cu-vote.vercel.app" badge="LIVE DEPLOYMENT" />
+          <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-950">
+            <Image
+              src={project.image}
+              alt="CUVote - Covenant University E-Voting Portal"
+              fill
+              className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
+              sizes="(max-width: 768px) 100vw, 50vw"
+              priority
+            />
+            {/* Live badge overlay */}
+            <div className="absolute bottom-2.5 right-2.5 flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-slate-950/85 backdrop-blur-md border border-cyan-500/40 text-[9px] font-mono text-cyan-300 shadow-lg">
+              <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
+              <span>cu-vote.vercel.app</span>
+              <ExternalLink size={10} />
             </div>
           </div>
         </div>
@@ -129,108 +58,24 @@ export default function ProjectPreview({ id }: { id: ProjectId }) {
 
   return (
     <div
-      className="project-preview preview-tickets"
+      className="project-preview preview-tickets group"
       role="img"
-      aria-label="Enterprise IT dashboard preview: dark helpdesk interface with ticket metrics and service requests"
+      aria-label="SAZ Helpdesk: SanlamAllianz Internal Enterprise IT Helpdesk & Support Portal"
     >
       <div className="preview-browser ticket-browser">
-        <Toolbar address="workspace / service-desk" />
-        <div className="mock-app">
-          <div className="mock-sidebar">
-            <div className="mock-logo">
-              <LifeBuoy size={15} className="text-electric" />
-              <span>ServiceDesk</span>
-            </div>
-            <div className="mock-nav-item active">
-              <House size={9} />
-              <span>Overview</span>
-            </div>
-            <div className="mock-nav-item">
-              <Ticket size={9} />
-              <span>All tickets</span>
-            </div>
-            <div className="mock-nav-item">
-              <Users size={9} />
-              <span>Team</span>
-            </div>
-            <div className="mock-nav-item">
-              <Bell size={9} />
-              <span>Notifications</span>
-            </div>
-            <div className="mock-nav-item">
-              <ShieldCheck size={9} />
-              <span>Permissions</span>
-            </div>
-            <div className="mock-nav-item">
-              <Settings size={9} />
-              <span>Settings</span>
-            </div>
-            <div className="mock-sidebar-footer">
-              <CircleHelp size={8} style={{ display: 'inline', marginRight: 4 }} />
-              Help &amp; support
-            </div>
-          </div>
-
-          <div className="mock-main">
-            <div className="mock-breadcrumb">Workspace / Service Desk</div>
-            <div className="mock-title-row">
-              <div>
-                <h4>Support, simplified.</h4>
-                <p>Enterprise triage &amp; live request monitoring.</p>
-              </div>
-              <span className="mock-action">＋ New ticket</span>
-            </div>
-
-            <div className="mock-stats">
-              <div className="mock-stat">
-                <span>Total tickets</span>
-                <strong>248</strong>
-                <small>↗ 12% this month</small>
-              </div>
-              <div className="mock-stat">
-                <span>In progress</span>
-                <strong>32</strong>
-                <small>Assigned to team</small>
-              </div>
-              <div className="mock-stat">
-                <span>Resolved</span>
-                <strong>186</strong>
-                <small>↗ 92% resolution rate</small>
-              </div>
-            </div>
-
-            <table className="mock-ticket-table">
-              <thead>
-                <tr>
-                  <th>Recent requests</th>
-                  <th>Status</th>
-                  <th>Priority</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Unable to access VPN</td>
-                  <td>
-                    <span className="mock-ticket-state">In progress</span>
-                  </td>
-                  <td>↑ High</td>
-                </tr>
-                <tr>
-                  <td>Software installation</td>
-                  <td>
-                    <span className="mock-ticket-state pending">Open</span>
-                  </td>
-                  <td>− Medium</td>
-                </tr>
-                <tr>
-                  <td>Email configuration</td>
-                  <td>
-                    <span className="mock-ticket-state resolved">Resolved</span>
-                  </td>
-                  <td>↓ Low</td>
-                </tr>
-              </tbody>
-            </table>
+        <Toolbar address="saz-helpdesk.corp / portal" badge="PHP · TAILWIND · INTERNAL" />
+        <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-950">
+          <Image
+            src={project.image}
+            alt="SAZ Helpdesk - Internal Enterprise Support Portal"
+            fill
+            className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
+            sizes="(max-width: 768px) 100vw, 50vw"
+          />
+          {/* Internal badge overlay */}
+          <div className="absolute bottom-2.5 right-2.5 flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-slate-950/85 backdrop-blur-md border border-slate-700/60 text-[9px] font-mono text-slate-300 shadow-lg">
+            <Shield size={10} className="text-cyan-400" />
+            <span>SanlamAllianz Internal Deployment</span>
           </div>
         </div>
       </div>

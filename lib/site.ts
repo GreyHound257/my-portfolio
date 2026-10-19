@@ -1,11 +1,11 @@
 export const site = {
   name: 'Eniolaoluwa Dayo-Obatewose',
-  shortName: 'Eniolaoluwa D.O',
+  shortName: 'Eniolaoluwa D.O.',
   alias: 'Kuromaru',
-  title: 'Cybersecurity & Full-Stack Engineer',
-  bio: 'Specializing in secure web applications, automated workflows, and high-performance APIs.',
+  title: 'Full-Stack & Systems Engineer (Security-Minded)',
+  bio: 'Full-stack software engineer building reliable web applications, internal enterprise tools, and high-performance backend services with a security-first foundation.',
   email: 'dayoobatewoseeniolaoluwa@gmail.com',
-  linkedin: 'https://www.linkedin.com/in/eniolaoluwa-dayo-obatewose/',
+  linkedin: 'https://www.linkedin.com/in/eniolaoluwa-dayo-obatewose-9599282a4/',
   github: 'https://github.com/GreyHound257',
   portfolioRepo: 'https://github.com/GreyHound257/my-portfolio',
   resumePdf: '/eniolaoluwa-resume.pdf',
@@ -14,6 +14,14 @@ export const site = {
 export type ProjectId = 'cuvote' | 'tickets';
 export type LabId = 'shadow' | 'documents' | 'emotion';
 
+export interface ProjectScreen {
+  id: string;
+  label: string;
+  image: string;
+  path: string;
+  description?: string;
+}
+
 export interface ProjectItem {
   id: ProjectId;
   number: string;
@@ -21,8 +29,11 @@ export interface ProjectItem {
   category: string;
   description: string;
   tags: string[];
-  status: 'Live' | 'Featured';
+  status: 'Live' | 'Featured' | 'Internal System';
   demoUrl?: string;
+  image: string;
+  secondaryImage?: string;
+  screens?: ProjectScreen[];
   features: { title: string; description: string }[];
 }
 
@@ -44,47 +55,97 @@ export const projects: ProjectItem[] = [
     id: 'cuvote',
     number: '01',
     title: 'CUVote',
-    category: 'WEB APPLICATION',
+    category: 'E-VOTING PLATFORM · PRODUCTION',
     description:
-      'A secure, multi-tenant electronic voting web platform engineered for university-scale elections. Architected with a decoupled frontend and backend to ensure high availability, cryptographic vote verification, and real-time data integrity.',
-    tags: ['Next.js', 'FastAPI', 'PostgreSQL', 'TypeScript', 'Tailwind'],
-    status: 'Featured',
+      'Secure, anonymous, and auditable electronic voting platform built for Covenant University. Engineered with cryptographic ballot separation, complete audit trails, and real-time election turnout monitoring.',
+    tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Vercel'],
+    status: 'Live',
+    demoUrl: 'https://cu-vote.vercel.app',
+    image: '/projects/cuvote.png',
+    screens: [
+      {
+        id: 'portal',
+        label: 'Voter Portal',
+        image: '/projects/cuvote.png',
+        path: 'cu-vote.vercel.app',
+        description: 'Public landing and verified voter portal with secure cryptographic ballot separation.',
+      },
+      {
+        id: 'candidates',
+        label: 'Candidates Registry',
+        image: '/projects/cuvote-candidates.png',
+        path: 'cu-vote.vercel.app / candidates',
+        description: 'Candidate nomination, credential verification, and departmental approval workflows.',
+      },
+      {
+        id: 'election',
+        label: 'Election Setup',
+        image: '/projects/cuvote-election.png',
+        path: 'cu-vote.vercel.app / elections / new',
+        description: 'Administrative election builder configuring academic sessions, positions, and rules.',
+      },
+      {
+        id: 'students',
+        label: 'Student Directory',
+        image: '/projects/cuvote-students.png',
+        path: 'cu-vote.vercel.app / students',
+        description: 'Bulk CSV matriculation number onboarding and voter eligibility directory.',
+      },
+    ],
     features: [
       {
-        title: 'Security at every layer',
-        description: 'Tenant-isolated election databases, cryptographically signed voter ballots, and granular role-based administrative access.',
+        title: 'Cryptographic Anonymous Ballots',
+        description: 'Voter identities are cryptographically separated from ballots to ensure absolute privacy while guaranteeing zero double-voting.',
       },
       {
-        title: 'Decoupled by design',
-        description: 'A Next.js client paired with an asynchronous FastAPI microservice ensures the ballot interface stays fast and resilient during peak voting surges.',
+        title: 'Secure & Auditable Records',
+        description: 'Tamper-evident logs maintain an immutable audit trail for complete election verification and administrative transparency.',
       },
       {
-        title: 'Integrity comes first',
-        description: 'PostgreSQL-backed relational guarantees and idempotent transaction logs provide a tamper-resistant foundation for live election tallies.',
+        title: 'Live Real-Time Turnout',
+        description: 'Real-time turnout tracking and instantly verifiable results published as soon as voting windows close.',
       },
     ],
   },
   {
     id: 'tickets',
     number: '02',
-    title: 'Enterprise IT Ticketing Dashboard',
-    category: 'ENTERPRISE SOFTWARE',
+    title: 'SAZ Helpdesk & IT Oversight',
+    category: 'INTERNAL ENTERPRISE SYSTEM',
     description:
-      'A full-stack internal helpdesk platform built to streamline corporate IT service requests. Features strict role-based access control (RBAC), automated SLA tracking, incident triage workflows, and instant notifications.',
-    tags: ['HTML 5', 'PHP', 'SQL', 'Tailwind CSS', 'APIs'],
-    status: 'Featured',
+      'Full-stack internal service desk and IT oversight portal built for SanlamAllianz. Streamlines corporate incident lifecycles, SLA response tracking, department dispatching, and executive analytics.',
+    tags: ['PHP', 'HTML', 'Tailwind CSS', 'SQL'],
+    status: 'Internal System',
+    image: '/projects/saz-helpdesk-clean.png',
+    secondaryImage: '/projects/saz-admin.png',
+    screens: [
+      {
+        id: 'portal',
+        label: 'Support Portal (Active Tickets)',
+        image: '/projects/saz-helpdesk-clean.png',
+        path: 'saz-helpdesk.corp / support-portal',
+        description: 'Active ticket queue with status badges, priority dispatching, and quick actions.',
+      },
+      {
+        id: 'admin',
+        label: 'Global IT Oversight',
+        image: '/projects/saz-admin.png',
+        path: 'saz-helpdesk.corp / global-it-oversight',
+        description: 'Enterprise executive analytics dashboard with ticket volume breakdown and CSV export.',
+      },
+    ],
     features: [
       {
-        title: 'Role-based authorization',
-        description: 'Multi-tiered access control partitions requesters, tier-1/2 support agents, and system administrators with fine-grained visibility.',
+        title: 'Role-Based Access Control (RBAC)',
+        description: 'Granular permissions segregating employee requesters, tier-1/2 IT support technicians, department leads, and system administrators.',
       },
       {
-        title: 'Automated lifecycle tracking',
-        description: 'Follows service incidents from triage through assignment, diagnostic escalations, and signed resolution auditing.',
+        title: 'SLA Lifecycle & Incident Routing',
+        description: 'Automated triage state machine tracking service requests from ticket logging to priority dispatching and signed resolution.',
       },
       {
-        title: 'Real-time telemetry',
-        description: 'Live ticket counters and state change events keep distributed engineering and support teams in continuous sync.',
+        title: 'Lightweight Internal Intranet Architecture',
+        description: 'Engineered with a streamlined PHP, HTML, and Tailwind stack running directly on corporate internal servers with fast relational SQL queries.',
       },
     ],
   },
@@ -149,7 +210,7 @@ export const labs: LabItem[] = [
 export const stack = [
   {
     category: 'Frontend & UI',
-    items: ['Next.js', 'HTML 5', 'React', 'TypeScript', 'Tailwind CSS'],
+    items: ['Next.js', 'HTML', 'React', 'TypeScript', 'Tailwind CSS'],
   },
   {
     category: 'Backend & APIs',

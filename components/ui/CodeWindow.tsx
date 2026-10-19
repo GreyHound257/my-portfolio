@@ -7,9 +7,9 @@ import { copyText } from '@/lib/site';
 const snippet = `const engineer = {
   name: 'Eniolaoluwa',
   alias: 'Kuromaru',
-  role: 'Cybersecurity & Full-Stack',
+  role: 'Full-Stack & Systems',
   principles: [
-    'Secure by design',
+    'Security-minded',
     'Built to scale',
     'Performance first'
   ],
@@ -43,13 +43,13 @@ export default function CodeWindow() {
       {'  '}alias: <span className="code-blue">&apos;Kuromaru&apos;</span>,
     </>,
     <>
-      {'  '}role: <span className="code-blue">&apos;Cybersecurity &amp; Full-Stack&apos;</span>,
+      {'  '}role: <span className="code-blue">&apos;Full-Stack &amp; Systems&apos;</span>,
     </>,
     <>
       {'  '}principles: [
     </>,
     <>
-      {'    '}<span className="code-blue">&apos;Secure by design&apos;</span>,
+      {'    '}<span className="code-blue">&apos;Security-minded&apos;</span>,
     </>,
     <>
       {'    '}<span className="code-blue">&apos;Built to scale&apos;</span>,
